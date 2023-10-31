@@ -1,0 +1,83 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  display: flex;
+  place-items: center;
+
+}
+
+h1 {
+  font-size: 35px;
+  line-height: 1.2;
+  margin: 30px;
+}
+
+p {
+  font-size: 20px;
+}
+
+#root {
+  text-align: center;
+  width: 100%;
+}
+
+.menu-superior {
+  justify-content: center;
+}
+.menu-superior a {
+  font-weight: bolder;
+}
+
+.vertical-line {
+  border-left: 1px solid #ccc;
+  height: 30px;
+  margin: 0 10px;
+}
+.vertical-line.d-flex.align-items-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navegador-top {
+  box-shadow: 1px 1px 12px 3px rgba(0, 0, 0, 0.219);
+}
+
+.navbar-logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.navbar {
+  padding: 0 50px;
+}
+
+.menu-superior .navbar-nav {
+  flex-direction: row;
+  margin: auto;
+  align-items: center;
+}
+
+.nav-link {
+  margin: 0 10px;
+}
+.navbar-logo, .cart-widget {
+  width: 200px;
+}
+
+.navegador {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.contenido img {
+  max-width: 400px;
+}
+
+.portada {
+  margin: 20px 50px 50px 50px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
