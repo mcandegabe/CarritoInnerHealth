@@ -1,16 +1,17 @@
-import { NavBar } from "./components/NavBar"
-import { ItemListContainer } from "./components/ItemListContainer"
+import { Cart, ItemDetailContainer, ItemListContainer, NavBar } from "./components";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-
+export const App = () => {
   return (
-    <>
+    <BrowserRouter>
       <NavBar />
-      <ItemListContainer innerHealthRound="" mensajeBienvenida="Su espacio de Homeopatía, Impregnología, AgroHomeopatía y Terapias para el Enriquecimiento de la Consciencia Humana" introduccion="Todos los Cursos de la Universidad Candegabe, créditos para el Algoritmo Candegabe, libros de UCH Editores y licencias para el Complete Repertory, en un sólo lugar" />
-
-    </>
-  )
-}
-
-export default App
+      <Routes>
+        <Route path="/" element={<ItemListContainer />} />
+        <Route path="/category/:category" element={<ItemListContainer />} />
+        <Route path="/item/:id" element={<ItemDetailContainer />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};

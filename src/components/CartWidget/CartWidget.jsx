@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 export const CartWidget = () => {
-  const [count, setCount] = useState(4);
+  const [count, setCount] = useState(6);
 
   return (
     <>
