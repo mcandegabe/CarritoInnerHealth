@@ -30,8 +30,8 @@ export const ItemDetailContainer = () => {
           {isLoading ? (
               <div className="index">
                   <div className="content">
-                      <img src={InnerHealthStoreRound} className="loading_img" alt="Inner Health Group Store" />
-                      <p>Cargando los detalles del producto...</p>
+                    <img src={InnerHealthStoreRound} className="loading_img rotate" alt="Inner Health Group Store" />
+                    <p>Cargando los detalles del producto...</p>
                   </div>
               </div>
           ) : (

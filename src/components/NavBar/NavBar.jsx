@@ -14,7 +14,7 @@ export const NavBar = () => {
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse menu-superior" id="navbarNav">
+                <div className="collapse navbar-collapse upper-menu" id="navbarNav">
                     <div className="navbar-nav ml-auto">
                         <a className="nav-link" href="/">Inicio</a>
                         <div className="d-none d-lg-block vertical-line"></div>

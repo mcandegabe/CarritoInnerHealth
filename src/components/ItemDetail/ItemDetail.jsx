@@ -1,10 +1,18 @@
-import { ItemCount } from "../ItemCount/ItemCount";
+import Swal from 'sweetalert2';
+import { ItemCount } from '../ItemCount/ItemCount';
 
 export const ItemDetail = ({ name, description, img, price, stock }) => {
-   
-    const onAdd = (items) => { 
-        alert(`Se agregaron ${items} al carrito`)
-     }
+  const onAdd = (items) => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Producto Agregado al Carrito',
+      text: `Se agregaron ${items} item/s a la cesta`,
+      customClass: {
+        confirmButton: 'swal-button-ok',
+      },
+      buttonsStyling: false,
+    });
+  };
 
   return (
     <div className="item-details">

@@ -43,7 +43,7 @@ export const ItemListContainer = () => {
       {isLoading ? (
         <div className="index">
           <div className="content">
-            <img src={InnerHealthStoreRound} className="loading_img" alt="Inner Health Group Store" />
+          <img src={InnerHealthStoreRound} className="loading_img rotate" alt="Inner Health Group Store" />
             <p>Cargando los productos disponibles...</p>
           </div>
         </div>
