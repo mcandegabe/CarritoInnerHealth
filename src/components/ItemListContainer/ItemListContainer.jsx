@@ -1,41 +1,39 @@
-import { useEffect, useState } from "react";
-import { getProducts } from "../../asyncMock";
+import { getDocs, collection, query, where } from 'firebase/firestore';
+import { db } from '../../config/firebaseConfig';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { ItemList } from "../ItemList/ItemList";
-import { useParams } from "react-router-dom";
 import InnerHealthStoreRound from "../../images/InnerHealthStoreRound.png";
 
 export const ItemListContainer = () => {
   const { category } = useParams();
-  
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
+    const fetchData = async () => {
+      setIsLoading(true);
 
-    getProducts()
-      .then((resp) => {
-        if (category) { 
-          const productsFilter = resp.filter(
-            (product) => product.category === category
-          );
+      const productsCollection = collection(db, "productos");
+      const q = category
+        ? query(productsCollection, where("category", "==", category))
+        : productsCollection;
 
-          if (productsFilter.length > 0) {
-            setProducts(productsFilter);
-          } else {
-            setProducts(resp);
-          }
-        } else {
-          setProducts(resp);
-        }
+      const querySnapshot = await getDocs(q);
 
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1500);
+      const productsData = [];
+      querySnapshot.forEach((doc) => {
+        productsData.push({ id: doc.id, ...doc.data() });
+      });
 
+      setProducts(productsData);
+
+      setTimeout(() => {
         setIsLoading(false);
-      })
-      .catch((error) => console.log(error));
+      }, 1500);
+    };
+
+    fetchData().catch((error) => console.log(error));
   }, [category]);
 
   return (
@@ -43,7 +41,11 @@ export const ItemListContainer = () => {
       {isLoading ? (
         <div className="index">
           <div className="content">
-          <img src={InnerHealthStoreRound} className="loading_img rotate" alt="Inner Health Group Store" />
+            <img
+              src={InnerHealthStoreRound}
+              className="loading_img rotate"
+              alt="Inner Health Group Store"
+            />
             <p>Cargando los productos disponibles...</p>
           </div>
         </div>

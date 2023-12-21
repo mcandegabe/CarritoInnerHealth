@@ -1,22 +1,21 @@
-import { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
-export const ItemCount = ({ stock, initial = 1, onAdd }) => {
+const ItemCount = ({ stock, initial = 1, item }) => {
   const [count, setCount] = useState(initial);
-  
+  const { addItem } = useContext(CartContext);
+
   const increment = () => {
     if (count < stock) {
-      return setCount(count + 1);
+      setCount(count + 1);
     }
-    setCount(count);
   };
 
   const decrement = () => {
-    if (count === 0) {
-      return setCount(0);
+    if (count > 0) {
+      setCount(count - 1);
     }
-    setCount(count - 1);
   };
-
 
   return (
     <div className="item-count">
@@ -29,7 +28,9 @@ export const ItemCount = ({ stock, initial = 1, onAdd }) => {
           -
         </button>
       </div>
-      <button className="btn btn-outline-primary add-btn" onClick={() => onAdd(count)}>Agregar a la cesta</button>
+      <button className="btn btn-outline-primary add-btn" onClick={() => addItem(item, count)}>Agregar a la cesta</button>
     </div>
   );
 };
+
+export { ItemCount };
